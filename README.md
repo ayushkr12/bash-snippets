@@ -1,6 +1,3 @@
-# bash-snippets
-Bash snippets i use during pentesting for making my life easier
-
 ```bash
 complete -W "\$(gf -list)" gf
 export PATH=$PATH:$HOME/go/bin
