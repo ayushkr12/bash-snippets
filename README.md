@@ -27,7 +27,6 @@ resub() {
         results+="${subdomain//FUZZ/$sub}\n"
     done < "$wordlist"
 
-    # Echo all results at once
     echo -e "$results"
 }
 
