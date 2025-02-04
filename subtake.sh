@@ -2,7 +2,7 @@
 
 # exit if custom nuclei templates path is not in environment variables or bash.rc
 if [[ $(echo $CUSTOM_NUCLEI_TEMPLATES_PATH) == "" ]]; then
-  echo -e "[ERROR] unable to find custom nuclei template PATH"
+  echo "[error] unable to find custom nuclei template PATH"
   exit 1
 fi
 
