@@ -2,7 +2,7 @@
 
 # Usage: subtake <subs.txt> <threads> <output_file> [optional argument: output_file]
 
-# Exit if custom nuclei templates path is not set in .bashrc
+# Exit if custom nuclei templates path is not in environment variables or bashrc
 if [[ -z "$CUSTOM_NUCLEI_TEMPLATES_PATH" ]]; then
   echo "[error] Unable to find custom nuclei template PATH"
   exit 1
@@ -14,12 +14,19 @@ subtake() {
   local subs_file="$1"
   local threads="$2"
   local output_file="$3"
-
+  
+  # Construct the nuclei command
+  local command="nuclei -t \"http/takeovers\" -t \"$CUSTOM_SUBDOMAIN_TAKEOVER_TEMPLATES_PATH\" -l \"$subs_file\" -c \"$threads\""
+  
   if [[ -n "$output_file" ]]; then
-    nuclei -t "http/takeovers" -t "$CUSTOM_SUBDOMAIN_TAKEOVER_TEMPLATES_PATH" -l "$subs_file" -c "$threads" -o "$output_file"
-  else
-    nuclei -t "http/takeovers" -t "$CUSTOM_SUBDOMAIN_TAKEOVER_TEMPLATES_PATH" -l "$subs_file" -c "$threads"
+    command="$command -o \"$output_file\""
   fi
+
+  # Output the command for clarity
+  echo "Running command: $command"
+  
+  # Execute the command
+  eval "$command"
 }
 
 # Ensure at least 2 arguments are provided
