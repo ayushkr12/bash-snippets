@@ -23,7 +23,7 @@ subtake() {
   fi
 
   # Output the command for clarity
-  echo "Running command: $command"
+  echo -e "\n[info] running cmd: $command"
   
   # Execute the command
   eval "$command"
