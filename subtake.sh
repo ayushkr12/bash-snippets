@@ -2,7 +2,7 @@
 
 # Usage: subtake <subs.txt> <threads> <output_file> [optional argument: output_file]
 
-# Exit if custom nuclei templates path is not in environment variables or bashrc
+# Exit if custom nuclei templates path is not set in .bashrc
 if [[ -z "$CUSTOM_NUCLEI_TEMPLATES_PATH" ]]; then
   echo "[error] Unable to find custom nuclei template PATH"
   exit 1
