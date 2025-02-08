@@ -17,7 +17,8 @@ subtake() {
   
   # Construct the nuclei command
   local command="nuclei -t \"http/takeovers\" -t \"$CUSTOM_SUBDOMAIN_TAKEOVER_TEMPLATES_PATH\" -l \"$subs_file\" -c \"$threads\""
-  
+
+  # if output_file is provided use it
   if [[ -n "$output_file" ]]; then
     command="$command -o \"$output_file\""
   fi
